@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+{% load static %}
 <html lang="en">
     <head>
         <!-- Required meta tags -->
@@ -8,15 +9,21 @@
         <!-- Bootstrap CSS -->
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
 
+        <!-- Custom CSS -->
+        <link rel="stylesheet" href="{% static 'css/base.css' %}">
+
         <!-- Swiper CSS -->
         <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.css">
         <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css">
 
-        <title>Hello, world!</title>
+        <!--  Font Awesome -->
+        <script src="https://kit.fontawesome.com/e9c73d7092.js" crossorigin="anonymous"></script>
+
+        <title>Happy Feets</title>
     </head>
     <!--NavBar-->
     <nav class="navbar navbar-expand-lg navbar-dark bg-info">
-        <a class="navbar-brand font-weight-bold" href="{% url 'home' %}">Happy Feets</a>
+        <a class="navbar-brand font-weight-bold" href="{% url 'home' %}"><i class="fas fa-paw"></i> Happy Feets</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>

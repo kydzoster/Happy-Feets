@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 {% extends "base.html" %}
+{% load static %}
 {% block content %}
     <div class="container">
         <div class="row">
@@ -12,8 +13,8 @@
                         <div class="swiper-wrapper">
                             {% for animal in animals %}
                                 <div class="swiper-slide">
-                                    <div class="card" style="width: 18rem;">
-                                        <img src="{{ animal.image.url }}" class="card-img-top" alt="{{ animal.image.url }}">
+                                    <div class="card mb-3">
+                                        <img src="{{ animal.image.url }}" class="card-img-top img-height" alt="{{ animal.image.url }}">
                                         <div class="card-body bg-info">
                                             <h5 class="card-title font-weight-bold text-center">{{ animal.name }}</h5>
                                             <p class="card-text text-light text-center">{{ animal.description }}</p>
@@ -27,9 +28,127 @@
                     <!-- If we need pagination -->
                     <div class="swiper-pagination"></div>
                     <!-- If we need navigation buttons -->
-                    <div class="swiper-button-prev"></div>
-                    <div class="swiper-button-next"></div>
+                    <div class="swiper-button-prev text-info"></div>
+                    <div class="swiper-button-next text-info"></div>
                 </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-6">
+                <div class="h4 text-center text-info my-3"><i class="fas fa-dog"></i> Mammals <i class="fas fa-cat"></i></div>
+                <table class="table table-striped text-center">
+                    <thead class="table-info">
+                        <tr>
+                        <th scope="col">Animal</th>
+                        <th scope="col">Name</th>
+                        <th scope="col">Gender</th>
+                        <th scope="col">Sheltered</th>
+                        </tr>
+                    </thead>
+                    <tbody class="bg-info">
+                        {% for mammal in mammals %}
+                        <tr class="text-white">
+                        <td>{{mammal.animal}}</td>
+                        <td>{{mammal.name}}</td>
+                        <td>{{mammal.gender}}</td>
+                        <td>{{mammal.sheltered}}</td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+                <!-- Mammal Pagination -->
+                {% if mammals.has_other_pages %}
+                <nav>
+                <ul class="pagination justified-content-center">
+                    {% if mammals.has_previous %}
+                        <li class="page-item">
+                        <a class="page-link text-light bg-info" href="?mammalspage={{ mammals.previous_page_number }}" tabindex="-1" aria-disabled="true">
+                            &laquo;
+                        </a>
+                        </li>
+                    {% else %}
+                        <li class="page-item disabled"></li>
+                    {% endif %}
+
+                    {% for pages in mammals.paginator.page_range %}
+                        <br>
+                        {% if mammals.number == pages %}
+                            <li class="page-item"><a class="page-link text-info" href="?mammalspage={{ pages }}">{{ pages }}</a></li>
+                        {% else %}
+                            <li class="page-item"><a class="page-link text-light bg-info" href="?mammalspage={{ pages }}">{{pages}}</a></li>
+                        {% endif %}
+                    {% endfor %}
+
+                    {% if mammals.has_next %}
+                        <li class="page-item">
+                        <a class="page-link text-light bg-info" href="?mammalspage={{ mammals.next_page_number }}">
+                            &raquo;
+                        </a>
+                        </li>
+                    {% else %}
+                        <li class="page-item disabled"></li>
+                    {% endif %}
+                </ul>
+                </nav>
+                {% endif %}
+            </div>
+            <div class="col-md-6">
+                <div class="h4 text-center text-info my-3"><i class="fas fa-otter"></i> Others <i class="fas fa-crow"></i></div>
+                <table class="table table-striped text-center">
+                    <thead class="table-info">
+                        <tr>
+                        <th scope="col">Animal</th>
+                        <th scope="col">Name</th>
+                        <th scope="col">Gender</th>
+                        <th scope="col">Sheltered</th>
+                        </tr>
+                    </thead>
+                    <tbody class="bg-info">
+                        {% for other in others %}
+                        <tr class="text-white">
+                        <td>{{other.animal}}</td>
+                        <td>{{other.name}}</td>
+                        <td>{{other.gender}}</td>
+                        <td>{{other.sheltered}}</td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+                <!-- Others Pagination -->
+                {% if others.has_other_pages %}
+                <nav>
+                <ul class="pagination justified-content-center">
+                    {% if others.has_previous %}
+                        <li class="page-item">
+                        <a class="page-link text-light bg-info" href="?otherspage={{ others.previous_page_number }}" tabindex="-1" aria-disabled="true">
+                            &laquo;
+                        </a>
+                        </li>
+                    {% else %}
+                        <li class="page-item disabled"></li>
+                    {% endif %}
+
+                    {% for pages in others.paginator.page_range %}
+                        <br>
+                        {% if others.number == pages %}
+                            <li class="page-item"><a class="page-link text-info" href="?otherspage={{ pages }}">{{ pages }}</a></li>
+                        {% else %}
+                            <li class="page-item"><a class="page-link text-light bg-info" href="?otherspage={{ pages }}">{{pages}}</a></li>
+                        {% endif %}
+                    {% endfor %}
+
+                    {% if others.has_next %}
+                        <li class="page-item">
+                        <a class="page-link text-light bg-info" href="?otherspage={{ others.next_page_number }}">
+                            &raquo;
+                        </a>
+                        </li>
+                    {% else %}
+                        <li class="page-item disabled"></li>
+                    {% endif %}
+                </ul>
+                </nav>
+                {% endif %}
             </div>
         </div>
     </div>
