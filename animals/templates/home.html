@@ -4,5 +4,10 @@
 {% block content %}
     <div class="container">
         <h1>It Works!</h1>
+        {% for animal in animals %}
+            <li>{{ animal.name }}</li>
+            <li>{{ animal.description }}</li>
+            <li>{{ animal.gender }}</li>
+        {% endfor %}
     </div>
 {% endblock content %}
