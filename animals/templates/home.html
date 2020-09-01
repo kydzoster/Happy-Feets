@@ -1,13 +1,36 @@
 <!DOCTYPE html>
 {% extends "base.html" %}
-
 {% block content %}
     <div class="container">
-        <h1>It Works!</h1>
-        {% for animal in animals %}
-            <li>{{ animal.name }}</li>
-            <li>{{ animal.description }}</li>
-            <li>{{ animal.gender }}</li>
-        {% endfor %}
+        <div class="row">
+            <div class="col-md-12">
+                <h2 class="text-center text-info my-3">It Works!</h2>
+                <div class="card-group">
+                    <!-- Slider main container -->
+                    <div class="swiper-container">
+                        <!-- Additional required wrapper -->
+                        <div class="swiper-wrapper">
+                            {% for animal in animals %}
+                                <div class="swiper-slide">
+                                    <div class="card" style="width: 18rem;">
+                                        <img src="{{ animal.image.url }}" class="card-img-top" alt="{{ animal.image.url }}">
+                                        <div class="card-body bg-info">
+                                            <h5 class="card-title font-weight-bold text-center">{{ animal.name }}</h5>
+                                            <p class="card-text text-light text-center">{{ animal.description }}</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            {% endfor %}
+                        </div>
+                    </div>
+                
+                    <!-- If we need pagination -->
+                    <div class="swiper-pagination"></div>
+                    <!-- If we need navigation buttons -->
+                    <div class="swiper-button-prev"></div>
+                    <div class="swiper-button-next"></div>
+                </div>
+            </div>
+        </div>
     </div>
 {% endblock content %}

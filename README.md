@@ -7,4 +7,5 @@
 
         - Django
         - Python Decouple Library
-        - 
+        - Pillow
+        - swiperjs.com
