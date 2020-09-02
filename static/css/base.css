@@ -5,3 +5,20 @@ body{
 .img-height{
     height: 25rem;
 }
+
+.animal-img{
+    height: 40rem;
+    width: 35rem;
+}
+
+.gender-m{
+    color: #0275d8
+}
+
+.gender-f{
+    color: #d9534f
+}
+
+.diff-1{
+    color: blue
+}

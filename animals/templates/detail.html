@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+{% extends "base.html" %}
+{% load static %}
+{% block content %}
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6 mt-3">
+                <img src="{{ animal.image.url }}" alt="Animal image" class="mx-auto d-block animal-img">
+            </div>
+            <div class="col-md-5 mt-5 ml-2">
+                <h5 class="mt-5 display-4 font-weight-bold">
+                    {{ animal.name }}
+                    {% if animal.gender == 'Male' %}
+                        <i class="fas fa-mars gender-m"></i>
+                    {% elif animal.gender == 'Female' %}
+                        <i class="fas fa-venus gender-f"></i>
+                    {% endif %}
+                </h5>
+                <p>
+                    {{ animal.description }}
+                </p>
+                <p>
+                    <span class="text-info">Difficulty: </span>
+                    {% if animal.difficulty >= 1 %}
+                        <i class="fas fa-paw diff-1"></i>
+                    {% else %}
+                        <i class="fas fa-paw"></i>
+                    {% endif %}
+                    {% if animal.difficulty >= 2 %}
+                        <i class="fas fa-paw diff-1"></i>
+                    {% else %}
+                        <i class="fas fa-paw"></i>
+                    {% endif %}
+                    {% if animal.difficulty >= 3 %}
+                        <i class="fas fa-paw diff-1"></i>
+                    {% else %}
+                        <i class="fas fa-paw"></i>
+                    {% endif %}
+                    {% if animal.difficulty >= 4 %}
+                        <i class="fas fa-paw diff-1"></i>
+                    {% else %}
+                        <i class="fas fa-paw"></i>
+                    {% endif %}
+                    {% if animal.difficulty >= 5 %}
+                        <i class="fas fa-paw diff-1"></i>
+                    {% else %}
+                        <i class="fas fa-paw"></i>
+                    {% endif %}
+                </p>
+            </div>
+        </div>
+    </div>
+{% endblock content %}
