@@ -9,19 +9,26 @@ def home(request):
 
     animals = Animal.objects.all()
     mammals = Animal.objects.filter(Q(animal='Cat') | Q(animal='Dog'))
+    no_of_mammals = len(mammals)
     paginator1 = Paginator(mammals, 1)
     page = request.GET.get('mammalspage')
     mammals = paginator1.get_page(page)
 
     others = Animal.objects.filter(Q(animal='Reptile') | Q(animal='Bird'))
+    no_of_others = len(others)
     paginator2 = Paginator(others, 1)
     page = request.GET.get('otherspage')
     others = paginator2.get_page(page)
+
+    no_of_animals = len(Animal.objects.all())
 
     context = {
         'animals': animals,
         'mammals': mammals,
         'others': others,
+        'no_of_animals': no_of_animals,
+        'no_of_mammals': no_of_mammals,
+        'no_of_others': no_of_others,
     }
     return render(request, 'home.html', context)
 
