@@ -12,7 +12,9 @@
                         <!-- Additional required wrapper -->
                         <div class="swiper-wrapper">
                             {% for animal in animals %}
+                                
                                 <div class="swiper-slide">
+                                    <a href="animal/{{ animal.id }}">
                                     <div class="card mb-3">
                                         <img src="{{ animal.image.url }}" class="card-img-top img-height" alt="{{ animal.image.url }}">
                                         <div class="card-body bg-info">
@@ -20,16 +22,19 @@
                                             <p class="card-text text-light text-center">{{ animal.description }}</p>
                                         </div>
                                     </div>
+                                    </a>
                                 </div>
+                                
                             {% endfor %}
                         </div>
+                        <!-- If we need pagination -->
+                        <div class="swiper-pagination"></div>
+                        <!-- If we need navigation buttons -->
+                        <div class="swiper-button-prev text-info font-weight-bold"></div>
+                        <div class="swiper-button-next text-info font-weight-bold"></div>
                     </div>
                 
-                    <!-- If we need pagination -->
-                    <div class="swiper-pagination"></div>
-                    <!-- If we need navigation buttons -->
-                    <div class="swiper-button-prev text-info"></div>
-                    <div class="swiper-button-next text-info"></div>
+                    
                 </div>
             </div>
         </div>

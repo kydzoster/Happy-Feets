@@ -47,6 +47,31 @@
                         <i class="fas fa-paw"></i>
                     {% endif %}
                 </p>
+                <p><span class="text-info">Age: </span>{{ animal.age }}</p>
+                <p><span class="text-info">Sheltered: </span>{{ animal.sheltered }}</p>
+
+                <div class="card-group">
+                    <!-- Slider main container -->
+                    <div class="swiper-container">
+                        <!-- Additional required wrapper -->
+                        <div class="swiper-wrapper">
+                            {% for animal in animals %}
+                                <div class="swiper-slide">
+                                    <a href="../{{ animal.id }}">
+                                    <div class="card">
+                                        <img src="{{ animal.image.url }}" class="card-img-top img-detail-h" alt="{{ animal.image.url }}">
+                                    </div>
+                                    </a>
+                                </div>
+                            {% endfor %}
+                        </div>
+                        <!-- Navigation buttons -->
+                        <div class="swiper-button-prev text-info font-weight-bold"></div>
+                        <div class="swiper-button-next text-info font-weight-bold"></div>
+                    </div>
+                    
+                    
+                </div>
             </div>
         </div>
     </div>
