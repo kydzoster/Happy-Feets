@@ -39,5 +39,17 @@ def detail(request, animal_id):
 
 
 def search(request):
-    context = {}
+    animals = Animal.objects.all()
+    search_query = request.GET.get('q')
+
+    if search_query:
+        animals = animals.filter(
+            Q(name__icontains=search_query) |
+            Q(animal__icontains=search_query) |
+            Q(gender__iexact=search_query)
+        )
+    context = {
+        'animals': animals,
+        'search_query': search_query,
+    }
     return render(request, 'search.html', context)
